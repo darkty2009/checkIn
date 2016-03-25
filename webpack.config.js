@@ -24,11 +24,17 @@ var config = {
         loaders:[
             {
                 test:/\.jsx?$/,
-                loader:'babel'
+                loader:'babel',
+                query:{
+                    presets:['es2015', 'stage-3']
+                }
             },
             {
                 test:/\.bundle\.jsx?$/,
-                loader:'bundle?lazy!babel'
+                loader:'bundle?lazy!babel',
+                query:{
+                    presets:['es2015', 'stage-3']
+                }
             },
             {
                 test:/\.(scss|sass)?$/,

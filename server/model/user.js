@@ -1,7 +1,7 @@
 var Model = require('../model');
 var parse = require('co-body');
 require("babel-core/register");
-//var UserController = require('../controller/user.js');
+var UserController = require('../controller/user.js');
 
 var User = module.exports = function(router) {
     Model.call(this, router);
@@ -14,7 +14,7 @@ User.prototype = {
             this.type = 'application/json';
             var params = this.params;
             console.log(params);
-            //var oneUser = UserController(params.name,params.password);
+            var oneUser = UserController(params.name,params.password);
             //(async function(){
             //    var result =  await oneUser.check();
             //    console.log('111111111111111111',result);
@@ -39,7 +39,7 @@ User.prototype = {
         // async demo
         var _this = this;
         this.router.get('/user/async', function *(next) {
-            this.body = (yield _this.asyncDemo());
+            this.body = yield _this.asyncDemo();
         });
     },
     asyncDemo:function() {
